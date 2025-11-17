@@ -9,27 +9,24 @@ import Register from "./comps/Register";
 import Login from "./comps/Login";
 import Dashboard from "./comps/Dashboard";
 
-
 const App: React.FC = () => {
   const [loggedInUser, setLoggedInUser] = useState<string>("");
 
   return (
     <Router>
       <nav>
-        <span style={{ fontWeight: 700, fontSize: "1.3em", marginRight: "2em" }}>
+        <Link to="/" className="brand">
           SkillSwap
-        </span>
+        </Link>
         <Link to="/">Home</Link>
         <Link to="/dashboard">Dashboard</Link>
         <Link to="/help">Help</Link>
-        <span style={{ marginLeft: "auto", fontSize: "0.95em" }}>
-          {loggedInUser
-            ? `Logged in as ${loggedInUser}`
-            : "Not logged in"}
+        <span className="user-status">
+          {loggedInUser ? `Logged in as ${loggedInUser}` : "Not logged in"}
         </span>
       </nav>
 
-      <div>
+      <div className="main-container">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route

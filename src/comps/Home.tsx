@@ -35,9 +35,9 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <section className="card" style={{ maxWidth: "900px" }}>
+      <section className="card card-primary" style={{ maxWidth: "900px" }}>
         <h1>SkillSwap – Campus Peer Workshops</h1>
-        <p style={{ marginBottom: "0.8em" }}>
+        <p className="mb-2">
           Discover and host short, peer‑led workshops on campus – from DSA and
           web dev to design, music, and more.
         </p>
@@ -45,55 +45,50 @@ const Home: React.FC = () => {
           Log in to create your own workshop or book a seat in sessions hosted
           by other students.
         </p>
-        <div style={{ marginTop: "1.5em", display: "flex", gap: "1em" }}>
+        <div className="flex mt-3" style={{ gap: "1rem" }}>
           <Link to="/login">
-            <button>Login & Explore</button>
+            <button className="btn btn-primary">Login & Explore</button>
           </Link>
           <Link to="/register">
-            <button style={{ background: "#fff", color: "#4c51bf" }}>
+            <button className="btn btn-secondary">
               Create SkillSwap Account
             </button>
           </Link>
         </div>
       </section>
 
-      <section className="card" style={{ maxWidth: "900px" }}>
+      <section className="card card-accent" style={{ maxWidth: "900px" }}>
         <h2>Featured Workshops</h2>
-        <p style={{ marginBottom: "1em" }}>
+        <p className="mb-2">
           These are sample workshops to show how the SkillSwap interface will
           look during your demo.
         </p>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "1em",
-          }}
-        >
+        <div className="grid grid-3">
           {sampleWorkshops.map((ws) => (
             <div
               key={ws.id}
-              className="card"
+              className="card fade-in"
               style={{
                 maxWidth: "100%",
-                boxShadow: "0 6px 20px rgba(0,0,0,0.12)",
-                padding: "1.5em",
+                padding: "1.5rem",
               }}
             >
               <h3>{ws.title}</h3>
-              <p style={{ fontSize: "0.95em", color: "#555" }}>
-                Hosted by {ws.host}
-              </p>
-              <p style={{ marginTop: "0.4em" }}>{ws.date}</p>
-              <p style={{ fontSize: "0.9em" }}>{ws.location}</p>
-              <p style={{ marginTop: "0.6em", fontSize: "0.9em" }}>
-                Tags: {ws.tags.join(", ")}
-              </p>
-              <p style={{ marginTop: "0.4em", fontWeight: 600 }}>
+              <p className="text-muted">Hosted by {ws.host}</p>
+              <p className="mt-1">{ws.date}</p>
+              <p className="text-muted">{ws.location}</p>
+              <div className="mt-2">
+                {ws.tags.map((tag, index) => (
+                  <span key={index} className="skill-tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <p className="mt-2 text-success" style={{ fontWeight: 600 }}>
                 Spots left: {ws.spotsLeft}
               </p>
-              <button style={{ marginTop: "0.8em" }}>View details</button>
+              <button className="btn btn-primary mt-2">View details</button>
             </div>
           ))}
         </div>

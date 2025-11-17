@@ -44,45 +44,59 @@ const Login: React.FC<LoginProps> = ({ setLoggedInUser }) => {
   };
 
   return (
-    <div className="card">
+    <div className="card card-primary" style={{ maxWidth: "500px" }}>
       <h1>Login to SkillSwap</h1>
-      <p style={{ marginBottom: "1em" }}>
+      <p className="mb-2">
         Use your SkillSwap account to manage your workshops and bookings.
       </p>
 
       <form onSubmit={handleSubmit}>
-        <label>
-          Username / SRN
-          <input
-            type="text"
-            name="username"
-            value={form.username}
-            onChange={handleChange}
-            required
-            placeholder="Enter your SRN or username"
-          />
-        </label>
+        <div className="form-group">
+          <label>
+            Username / SRN
+            <input
+              type="text"
+              name="username"
+              value={form.username}
+              onChange={handleChange}
+              required
+              placeholder="Enter your SRN or username"
+            />
+          </label>
+        </div>
 
-        <label>
-          Password
-          <input
-            type="password"
-            name="password"
-            value={form.password}
-            onChange={handleChange}
-            required
-            placeholder="Enter your password"
-          />
-        </label>
+        <div className="form-group">
+          <label>
+            Password
+            <input
+              type="password"
+              name="password"
+              value={form.password}
+              onChange={handleChange}
+              required
+              placeholder="Enter your password"
+            />
+          </label>
+        </div>
 
-        <button type="submit" disabled={loading}>
+        <button
+          type="submit"
+          disabled={loading}
+          className={`btn btn-primary ${loading ? "loading" : ""}`}
+          style={{ width: "100%" }}
+        >
           {loading ? "Logging in..." : "Login"}
         </button>
       </form>
 
-      <p style={{ marginTop: "1em", fontSize: "0.9em" }}>
+      <p className="mt-2 text-muted text-center">
         Don&apos;t have a SkillSwap account?{" "}
-        <Link to="/register">Register here</Link>
+        <Link
+          to="/register"
+          style={{ color: "var(--primary-green)", fontWeight: "600" }}
+        >
+          Register here
+        </Link>
       </p>
     </div>
   );
